@@ -7,18 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class Notification extends AppCompatActivity {
+public class search extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        setContentView(R.layout.activity_search);
 
-        Button btnSearch1 = (Button) findViewById(R.id.btnSearch1);
-        Button btnAdd1 = (Button) findViewById(R.id.btnAdd1);
-        Button btnNotification1 = (Button) findViewById(R.id.btnNotification1);
+        Button btnSearch2 = (Button) findViewById(R.id.btnSearch2);
+        Button btnAdd2 = (Button) findViewById(R.id.btnAdd2);
+        Button btnNotification2 = (Button) findViewById(R.id.btnNotification2);
 
-        btnSearch1.setOnClickListener(new View.OnClickListener() {
+        btnSearch2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), search.class);
@@ -26,7 +26,7 @@ public class Notification extends AppCompatActivity {
             }
         });
 
-        btnAdd1.setOnClickListener(new View.OnClickListener() {
+        btnAdd2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NewLog.class);
@@ -34,15 +34,12 @@ public class Notification extends AppCompatActivity {
             }
         });
 
-        btnNotification1.setOnClickListener(new View.OnClickListener() {
+        btnNotification2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Notification.class);
                 startActivity(intent);
             }
         });
-
-
-
     }
 }
