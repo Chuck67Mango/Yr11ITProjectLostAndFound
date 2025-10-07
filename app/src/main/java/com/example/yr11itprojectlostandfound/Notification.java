@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Notification extends AppCompatActivity {
 
@@ -14,9 +15,9 @@ public class Notification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        Button btnSearch1 = (Button) findViewById(R.id.btnSearch1);
-        Button btnAdd1 = (Button) findViewById(R.id.btnAdd1);
-        Button btnNotification1 = (Button) findViewById(R.id.btnNotification1);
+        ImageButton btnSearch1 = (ImageButton) findViewById(R.id.btnSearch1);
+        ImageButton btnAdd1 = (ImageButton) findViewById(R.id.btnAdd1);
+        ImageButton btnNotification1 = (ImageButton) findViewById(R.id.btnNotification1);
 
         btnSearch1.setOnClickListener(new View.OnClickListener() {
             @Override
