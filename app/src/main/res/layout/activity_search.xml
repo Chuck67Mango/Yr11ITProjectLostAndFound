@@ -161,8 +161,8 @@
 
     <EditText
         android:id="@+id/edtDisplay2"
-        android:layout_width="431dp"
-        android:layout_height="623dp"
+        android:layout_width="345dp"
+        android:layout_height="352dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
