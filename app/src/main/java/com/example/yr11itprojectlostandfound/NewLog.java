@@ -15,11 +15,11 @@ public class NewLog extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_log);
 
-        ImageButton btnSearch3 = (ImageButton) findViewById(R.id.btnSearch3);
-        ImageButton btnAdd3 = (ImageButton) findViewById(R.id.btnAdd3);
-        ImageButton btnNotification3 = (ImageButton) findViewById(R.id.btnNotification3);
+        ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch3);
+        ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd3);
+        ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification3);
 
-        btnSearch3.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), search.class);
@@ -27,7 +27,7 @@ public class NewLog extends AppCompatActivity {
             }
         });
 
-        btnAdd3.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NewLog.class);
@@ -35,7 +35,7 @@ public class NewLog extends AppCompatActivity {
             }
         });
 
-        btnNotification3.setOnClickListener(new View.OnClickListener() {
+        btnNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Notification.class);

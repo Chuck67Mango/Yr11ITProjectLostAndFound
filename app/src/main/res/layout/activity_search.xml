@@ -158,7 +158,7 @@
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
     <EditText
-        android:id="@+id/editTextTextMultiLine2"
+        android:id="@+id/edtDisplay2"
         android:layout_width="345dp"
         android:layout_height="352dp"
         android:ems="10"

@@ -15,11 +15,11 @@ public class Notification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        ImageButton btnSearch1 = (ImageButton) findViewById(R.id.btnSearch4);
-        ImageButton btnAdd1 = (ImageButton) findViewById(R.id.btnAdd4);
-        ImageButton btnNotification1 = (ImageButton) findViewById(R.id.btnNotification4);
+        ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch4);
+        ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd4);
+        ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
 
-        btnSearch1.setOnClickListener(new View.OnClickListener() {
+        btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), search.class);
@@ -27,7 +27,7 @@ public class Notification extends AppCompatActivity {
             }
         });
 
-        btnAdd1.setOnClickListener(new View.OnClickListener() {
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), NewLog.class);
@@ -35,7 +35,7 @@ public class Notification extends AppCompatActivity {
             }
         });
 
-        btnNotification1.setOnClickListener(new View.OnClickListener() {
+        btnNotification.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Notification.class);
