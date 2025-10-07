@@ -15,9 +15,9 @@ public class Notification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
-        ImageButton btnSearch1 = (ImageButton) findViewById(R.id.btnSearch1);
-        ImageButton btnAdd1 = (ImageButton) findViewById(R.id.btnAdd1);
-        ImageButton btnNotification1 = (ImageButton) findViewById(R.id.btnNotification1);
+        ImageButton btnSearch1 = (ImageButton) findViewById(R.id.btnSearch4);
+        ImageButton btnAdd1 = (ImageButton) findViewById(R.id.btnAdd4);
+        ImageButton btnNotification1 = (ImageButton) findViewById(R.id.btnNotification4);
 
         btnSearch1.setOnClickListener(new View.OnClickListener() {
             @Override
