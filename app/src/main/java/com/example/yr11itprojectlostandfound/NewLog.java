@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -24,16 +25,24 @@ public class NewLog extends AppCompatActivity {
 
         EditText edtName = (EditText) findViewById(R.id.edtName);
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
-        TextView txtDescription = (TextView) findViewById(R.id.textDescription);
+        EditText edtDescription = (EditText) findViewById(R.id.edtDescription);
         EditText edtColour = (EditText) findViewById(R.id.edtColour);
 
         ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
         Button btnClear = (Button) findViewById(R.id.btnClear);
 
+        CheckBox chkFound = (CheckBox) findViewById(R.id.CheckBoxFound);
+
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                
+                String strName = edtName.getText().toString();
+                String strClass = edtClass.getText().toString();
+                String strDescription = edtDescription.getText().toString();
+                String strColour = edtColour.getText().toString();
+
+                boolean bln
+
             }
         });
 

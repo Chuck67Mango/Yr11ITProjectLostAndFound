@@ -137,6 +137,7 @@
         android:id="@+id/edtFilter"
         android:layout_width="290dp"
         android:layout_height="41dp"
+        android:background="#2CBCB5B5"
         android:ems="10"
         android:hint="search"
         android:inputType="text"
