@@ -1,6 +1,9 @@
 package com.example.yr11itprojectlostandfound;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,28 +13,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main); // Assuming activity_main.xml contains a RelativeLayout with id 'my_parent_layout'
+        setContentView(R.layout.activity_main);
 
-        // 1. Instantiate the TextView
-        TextView myTextView = new TextView(this);
+        ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch5);
+        ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd5);
+        ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification5);
 
-        // 2. Set Layout Parameters
-        RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT
-        );
-        layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT, RelativeLayout.TRUE);
-        myTextView.setLayoutParams(layoutParams);
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), search.class);
+                startActivity(intent);
+            }
+        });
 
-        // 3. Set Text and other properties
-        myTextView.setText("This TextView was created programmatically!");
-        myTextView.setTextColor(getResources().getColor(R.color.black)); // Example color
-        myTextView.setTextSize(24);
+        btnAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), NewLog.class);
+                startActivity(intent);
+            }
+        });
 
-       // 4. Add to a Parent ViewGroup
-//        RelativeLayout parentLayout = findViewById(R.id.ConstraintLayout);
-//        if (parentLayout != null) {
-//            parentLayout.addView(myTextView);
-//        }
+        btnNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), Notification.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 }

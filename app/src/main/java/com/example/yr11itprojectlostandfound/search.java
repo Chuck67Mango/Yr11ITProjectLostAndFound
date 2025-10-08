@@ -22,6 +22,7 @@ public class search extends AppCompatActivity {
         ImageButton btnFilter = (ImageButton) findViewById(R.id.btnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
         EditText edtDisplay = (EditText) findViewById(R.id.edtDisplay2);
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +44,14 @@ public class search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Notification.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(intent);
             }
         });

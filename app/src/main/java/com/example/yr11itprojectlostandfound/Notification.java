@@ -18,6 +18,7 @@ public class Notification extends AppCompatActivity {
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch4);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd4);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings4);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,6 +40,14 @@ public class Notification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), Notification.class);
+                startActivity(intent);
+            }
+        });
+
+        btnSettings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
