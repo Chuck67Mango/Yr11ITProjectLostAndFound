@@ -8,7 +8,15 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 public class Notification extends AppCompatActivity {
+    public static final String FILENAME = "LostItems.csv";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +27,11 @@ public class Notification extends AppCompatActivity {
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd4);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings4);
+
+
+
+
+
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
