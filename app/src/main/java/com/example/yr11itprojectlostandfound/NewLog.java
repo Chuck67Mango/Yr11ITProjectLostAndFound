@@ -66,7 +66,17 @@ public class NewLog extends AppCompatActivity {
                 String strDescription = edtDescription.getText().toString();
                 String strColour = edtColour.getText().toString();
 
-                boolean bln
+                boolean blnValidation = false ;
+
+                if(strColour.equals("")){
+                    showToast("Information Not Filled");
+                }
+                else if(strClass.equals("")){
+                    showToast("Information Not Filled");
+                }
+                else if(strName.equals("")){
+                    showToast("Information Not Filled");
+                }
 
             }
         });
