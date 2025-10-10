@@ -17,16 +17,18 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class NewLog extends AppCompatActivity {
-    public static final String FILENAME = "LostItems.csv";
+    public static final String Lost = "LostItems.csv";
+    public static final String Found = "FoundItems.csv";
+    public static final String Both = "LostAndFoundItems.csv";
 
     private void showToast(String strMsg) {
         Toast toastMsg = Toast.makeText(this, strMsg, Toast.LENGTH_SHORT);
         toastMsg.show();
     }
 
-    private void writeToFile(String data){
+    private void writeToFile(String data, String File){
         try{
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(FILENAME, Context.MODE_APPEND));
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
             showToast(data + " Has been saved into file");
