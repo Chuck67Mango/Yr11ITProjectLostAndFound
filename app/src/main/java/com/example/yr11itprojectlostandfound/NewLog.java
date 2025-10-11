@@ -13,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 public class NewLog extends AppCompatActivity {
@@ -38,6 +42,38 @@ public class NewLog extends AppCompatActivity {
         }
     }
 
+    private void countFromCSV(int intNoOfItems, String filename) {
+        try{
+            InputStream inputStream = openFileInput(filename);
+
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+                while((strLine=br.readLine())!=null){
+                    intNoOfItems++;
+                }
+
+                intNoOfItems++;
+            }
+            else{
+                intNoOfItems=1;
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +88,7 @@ public class NewLog extends AppCompatActivity {
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
         EditText edtDescription = (EditText) findViewById(R.id.edtDescription);
         EditText edtColour = (EditText) findViewById(R.id.edtColour);
+        EditText edtItem = (EditText) findViewById(R.id.edtItem);
 
         ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
         Button btnClear = (Button) findViewById(R.id.btnClear);
@@ -65,6 +102,7 @@ public class NewLog extends AppCompatActivity {
                 String strClass = edtClass.getText().toString();
                 String strDescription = edtDescription.getText().toString();
                 String strColour = edtColour.getText().toString();
+                String strItem = edtItem.getText().toString();
 
                 boolean blnValidation = false ;
 
@@ -76,6 +114,38 @@ public class NewLog extends AppCompatActivity {
                 }
                 else if(strName.equals("")){
                     showToast("Information Not Filled");
+                }
+                else if(strDescription.equals("")){
+                    showToast("Information Not Filled");
+                }
+                else if(strItem.equals("")){
+                    showToast("Information Not Filled");
+                }
+                else{
+                    blnValidation=true;
+                }
+
+                if(blnValidation){
+                    if(chkFound.isChecked()){
+                        int intNoOfItems = 0;
+                        countFromCSV(intNoOfItems, "noFoundItems.csv");
+                        writeToFile(intNoOfItems+"\n","noFoundItems.csv");
+                        writeToFile(strItem, "itemFoundItems.csv");
+                        writeToFile(strDescription, "descriptionFoundItems.csv");
+                        writeToFile(strColour, "colourFoundItems.csv");
+                        writeToFile(strName, "nameFoundItems.csv");
+                        writeToFile(strClass, "classFoundItems.csv");
+                    }
+                    else{
+                        int intNoOfItems = 0;
+                        countFromCSV(intNoOfItems, "noLostItems.csv");
+                        writeToFile(intNoOfItems+"\n","noLostItems.csv");
+                        writeToFile(strItem, "itemLostItems.csv");
+                        writeToFile(strDescription, "descriptionLostItems.csv");
+                        writeToFile(strColour, "colourLostItems.csv");
+                        writeToFile(strName, "nameLostItems.csv");
+                        writeToFile(strClass, "classLostItems.csv");
+                    }
                 }
 
             }
