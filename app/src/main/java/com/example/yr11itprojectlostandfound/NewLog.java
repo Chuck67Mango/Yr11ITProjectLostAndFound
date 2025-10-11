@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -18,27 +17,24 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 
 public class NewLog extends AppCompatActivity {
-    public static final String FILENAME = "LostItems.csv";
+    public static final String Lost = "LostItems.csv";
+    public static final String Found = "FoundItems.csv";
+    public static final String Both = "LostAndFoundItems.csv";
 
     private void showToast(String strMsg) {
         Toast toastMsg = Toast.makeText(this, strMsg, Toast.LENGTH_SHORT);
         toastMsg.show();
     }
 
-    private void writeToFile(String data, String filename) {
-
-        try {
-
-            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(filename, Context.MODE_APPEND));
+    private void writeToFile(String data, String File){
+        try{
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
+            showToast(data + " Has been saved into file");
 
-            showToast("logged");
-
-        }
-
-        catch (IOException e) {
-            showToast("Error in saving!");
+        } catch (IOException e){
+            showToast("error in saving");
         }
     }
 
@@ -56,7 +52,6 @@ public class NewLog extends AppCompatActivity {
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
         EditText edtDescription = (EditText) findViewById(R.id.edtDescription);
         EditText edtColour = (EditText) findViewById(R.id.edtColour);
-        EditText edtItem = (EditText) findViewById(R.id.edtItem);
 
         ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
         Button btnClear = (Button) findViewById(R.id.btnClear);
@@ -70,38 +65,17 @@ public class NewLog extends AppCompatActivity {
                 String strClass = edtClass.getText().toString();
                 String strDescription = edtDescription.getText().toString();
                 String strColour = edtColour.getText().toString();
-                String strItem = edtItem.getText().toString();
+
+                boolean blnValidation = false ;
 
                 if(strColour.equals("")){
                     showToast("Information Not Filled");
-                    edtColour.setBackgroundColor(Color.parseColor("#D9544D"));
                 }
                 else if(strClass.equals("")){
                     showToast("Information Not Filled");
-                    edtClass.setBackgroundColor(Color.parseColor("#D9544D"));
                 }
                 else if(strName.equals("")){
                     showToast("Information Not Filled");
-                    edtName.setBackgroundColor(Color.parseColor("#D9544D"));
-                }
-                else if(strDescription.equals("")){
-                    showToast("Information Not Filled");
-                    edtDescription.setBackgroundColor(Color.parseColor("#D9544D"));
-                }
-                else if(strItem.equals("")){
-                    showToast("Information Not Filled");
-                    edtItem.setBackgroundColor(Color.parseColor("#D9544D"));
-                }
-                else{
-                    if(chkFound.isChecked()){
-                        writeToFile("1"+"\n", ""); // need to correct this part number needs to change, not neccessary
-                        writeToFile(strName+"\n", "");
-                        writeToFile(strClass+"\n", "");
-                        writeToFile(strColour+"\n", "");
-                    }
-                    else{
-
-                    }
                 }
 
             }

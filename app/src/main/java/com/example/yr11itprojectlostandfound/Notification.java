@@ -15,8 +15,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Notification extends AppCompatActivity {
-    public static final String FILENAME = "LostItems.csv";
-
+    public static final String Lost = "LostItems.csv";
+    public static final String Found = "FoundItems.csv";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
