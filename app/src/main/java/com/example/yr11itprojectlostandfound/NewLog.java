@@ -35,7 +35,7 @@ public class NewLog extends AppCompatActivity {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
-            showToast(data + " Has been saved into file");
+            showToast(data + " logged");
 
         } catch (IOException e){
             showToast("error in saving");
