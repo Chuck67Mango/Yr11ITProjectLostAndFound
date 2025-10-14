@@ -27,25 +27,7 @@ public class Notification extends AppCompatActivity {
     ArrayList<String> LostArray = new ArrayList<>();
     ArrayList <String> FoundArray = new ArrayList<>();
 
-    private void readFromCSV(String FILENAME, ArrayList Array) {
-        try {
-            InputStream inputStream = openFileInput(FILENAME);
-            if (inputStream != null) {
-                InputStreamReader isr = new InputStreamReader(inputStream);
-                BufferedReader br = new BufferedReader(isr);
-                String strLine = "";
 
-                while ((strLine = br.readLine()) != null) {
-                    Array.add(strLine);
-                }
-            }
-            //inputStream.close();
-        } catch (FileNotFoundException e) {
-
-        } catch (IOException e) {
-
-        }
-   }
     private void writeToFile(String data, String FILENAME){
         try{
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(FILENAME, Context.MODE_APPEND));
@@ -72,7 +54,7 @@ public class Notification extends AppCompatActivity {
         //make the code read file search for found items that match description of lost items then display notification
 
         //writeToFile("Item", Found);
-        readFromCSV(Found, FoundArray);
+        //readFromCSV(Found, FoundArray);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
