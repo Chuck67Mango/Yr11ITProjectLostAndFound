@@ -18,6 +18,11 @@ public class ItemDescription extends AppCompatActivity {
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd3);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification3);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification3);
+        String strName = "";
+        String strClass = "";
+        String strDescription = "";
+        String strItem = "";
+        String strColour = "";
 
         EditText edtName = (EditText) findViewById(R.id.edtName);
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
@@ -28,5 +33,11 @@ public class ItemDescription extends AppCompatActivity {
         ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
 
         CheckBox chkFound = (CheckBox) findViewById(R.id.CheckBoxFound);
+
+        edtName.setText(strName);
+        edtClass.setText(strClass);
+        edtDescription.setText(strDescription);
+        edtColour.setText(strColour);
+        edtItem.setText(strItem);
     }
 }
