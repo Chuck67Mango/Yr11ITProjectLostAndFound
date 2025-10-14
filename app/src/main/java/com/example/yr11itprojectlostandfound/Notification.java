@@ -95,8 +95,7 @@ public class Notification extends AppCompatActivity {
                 Toast.makeText(
                         getApplicationContext(),"Position: "+ itemPosition + "listItem : "
                                 + itemValue, Toast.LENGTH_LONG).show();
-                Intent iDetail = new Intent(view.getContext(),
-                        ItemDescription.class);
+                Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
                 iDetail.putExtra("BrandName", itemValue);
 
                 startActivity(iDetail);
