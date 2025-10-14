@@ -13,10 +13,55 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
 public class Notification extends AppCompatActivity {
     public static final String Lost = "LostItems.csv";
     public static final String Found = "FoundItems.csv";
+
+    ArrayList<String> LostArray = new ArrayList<>();
+    ArrayList <String> FoundArray = new ArrayList<>();
+
+    private void readFromLost() {
+        try {
+            InputStream inputStream = openFileInput(Lost);
+            if (inputStream != null) {
+                InputStreamReader isr = new InputStreamReader(inputStream);
+                BufferedReader br = new BufferedReader(isr);
+                String strLine = "";
+
+                while ((strLine = br.readLine()) != null) {
+                    LostArray.add(strLine);
+                }
+            }
+            //inputStream.close();
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+    } private void readFromFound() {
+        try {
+            InputStream inputStream = openFileInput(Found);
+            if (inputStream != null) {
+                InputStreamReader isr = new InputStreamReader(inputStream);
+                BufferedReader br = new BufferedReader(isr);
+                String strLine = "";
+
+                while ((strLine = br.readLine()) != null) {
+                    FoundArray.add(strLine);
+                }
+
+            }
+            //inputStream.close();
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +73,7 @@ public class Notification extends AppCompatActivity {
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings4);
 
+        //make the code read file search for found items that match description of lost items then display notification
 
 
 
