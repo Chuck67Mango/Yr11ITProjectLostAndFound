@@ -75,7 +75,7 @@ public class Notification extends AppCompatActivity {
 
         //make the code read file search for found items that match description of lost items then display notification
 
-        writeToFile("Item", Found);
+        //writeToFile("Item", Found);
         readFromCSV(Found, FoundArray);
 
 
@@ -90,13 +90,13 @@ public class Notification extends AppCompatActivity {
 
                 int itemPosition=position;
 
-                String itemValue = (String) listViewNotifications.getItemAtPosition(position);
+                String Item = (String) listViewNotifications.getItemAtPosition(position);
 
                 Toast.makeText(
                         getApplicationContext(),"Position: "+ itemPosition + "listItem : "
-                                + itemValue, Toast.LENGTH_LONG).show();
+                                + Item, Toast.LENGTH_LONG).show();
                 Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
-                iDetail.putExtra("BrandName", itemValue);
+                iDetail.putExtra(Item, Item);
 
                 startActivity(iDetail);
             }

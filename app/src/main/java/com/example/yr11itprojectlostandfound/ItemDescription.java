@@ -16,15 +16,19 @@ public class ItemDescription extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_description);
+
+
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch3);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd3);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification3);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification3);
-        String strName = ""; //Change these to actual data
-        String strClass = "";
-        String strDescription = "";
-        String strItem = "";
-        String strColour = "";
+
+        String strItem = getIntent().getStringExtra("Item");
+        String strName = "testName"; //Change these to actual data
+        String strClass = "TestClass";
+        String strDescription = "Test";
+        //String strItem = "TestItem";
+        String strColour = "TestColour";
 
         EditText edtName = (EditText) findViewById(R.id.edtName);
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
