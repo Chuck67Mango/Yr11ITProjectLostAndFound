@@ -2,6 +2,7 @@ package com.example.yr11itprojectlostandfound;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -44,6 +46,17 @@ public class Notification extends AppCompatActivity {
 
         }
    }
+    private void writeToFile(String data, String FILENAME){
+        try{
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(FILENAME, Context.MODE_APPEND));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+            //showToast(data + " Has been saved into file");
+
+        } catch (IOException e){
+            //showToast("error in saving");
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +71,7 @@ public class Notification extends AppCompatActivity {
 
         //make the code read file search for found items that match description of lost items then display notification
 
+        //writeToFile("Item", Found);
         readFromCSV(Found, FoundArray);
 
 
