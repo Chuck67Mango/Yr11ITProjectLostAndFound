@@ -18,7 +18,7 @@ public class ItemDescription extends AppCompatActivity {
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd3);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification3);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification3);
-        String strName = "";
+        String strName = ""; //Change these to actual data
         String strClass = "";
         String strDescription = "";
         String strItem = "";
