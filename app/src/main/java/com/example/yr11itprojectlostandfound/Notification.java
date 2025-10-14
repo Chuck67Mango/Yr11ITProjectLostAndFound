@@ -6,10 +6,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -39,6 +41,26 @@ public class Notification extends AppCompatActivity {
             //showToast("error in saving");
         }
     }
+    private void readFromCSV(String FILENAME, ArrayList Array) {
+        try {
+            InputStream inputStream = openFileInput(FILENAME);
+            if (inputStream != null) {
+                InputStreamReader isr = new InputStreamReader(inputStream);
+                BufferedReader br = new BufferedReader(isr);
+                String strLine = "";
+
+                while ((strLine = br.readLine()) != null) {
+                    Array.add(strLine);
+                }
+
+            }
+            //inputStream.close();
+        } catch (FileNotFoundException e) {
+
+        } catch (IOException e) {
+
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +75,8 @@ public class Notification extends AppCompatActivity {
 
         //make the code read file search for found items that match description of lost items then display notification
 
-        //writeToFile("Item", Found);
-        //readFromCSV(Found, FoundArray);
+        writeToFile("Item", Found);
+        readFromCSV(Found, FoundArray);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -62,6 +84,23 @@ public class Notification extends AppCompatActivity {
 
 
         listViewNotifications.setAdapter(adapter);
+        listViewNotifications.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+
+                int itemPosition=position;
+
+                String itemValue = (String) listViewNotifications.getItemAtPosition(position);
+
+                Toast.makeText(
+                        getApplicationContext(),"Position: "+ itemPosition + "listItem : "
+                                + itemValue, Toast.LENGTH_LONG).show();
+                Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
+                iDetail.putExtra("BrandName", itemValue);
+
+                startActivity(iDetail);
+            }
+        });
 
 
 
