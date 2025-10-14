@@ -99,6 +99,7 @@ public class MainActivity extends AppCompatActivity {
                     clearFile("classLostItems.csv");
 
                     showToast("HISTORY CLEARED SUCCESSFULLY");
+                    edtPassword.setText("");
                 }
                 else{
                     showToast("PASSWORD INCORRECT");

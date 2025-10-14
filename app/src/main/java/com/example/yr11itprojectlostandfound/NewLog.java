@@ -35,7 +35,7 @@ public class NewLog extends AppCompatActivity {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
-            showToast(data + " logged");
+            showToast(data + "logged");
 
         } catch (IOException e){
             showToast("error in saving");
@@ -146,8 +146,29 @@ public class NewLog extends AppCompatActivity {
                         writeToFile(strName, "nameLostItems.csv");
                         writeToFile(strClass, "classLostItems.csv");
                     }
+
+                    edtClass.setText("");
+                    edtColour.setText("");
+                    edtName.setText("");
+                    edtDescription.setText("");
+                    edtItem.setText("");
+                    chkFound.setChecked(false);
+
                 }
 
+            }
+        });
+
+        btnClear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                edtClass.setText("");
+                edtColour.setText("");
+                edtName.setText("");
+                edtDescription.setText("");
+                edtItem.setText("");
+                chkFound.setChecked(false);
+                showToast("cleared");
             }
         });
 
