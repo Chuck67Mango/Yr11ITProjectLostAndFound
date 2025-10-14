@@ -26,8 +26,13 @@ public class Notification extends AppCompatActivity {
     public static final String Lost = "LostItems.csv";
     public static final String Found = "FoundItems.csv";
 
+    public static final String notification = "notifications.csv";
+
+
     ArrayList<String> LostArray = new ArrayList<>();
     ArrayList <String> FoundArray = new ArrayList<>();
+
+    ArrayList <String> notificationArray = new ArrayList<>();
 
 
     private void writeToFile(String data, String FILENAME){
@@ -76,11 +81,11 @@ public class Notification extends AppCompatActivity {
         //make the code read file search for found items that match description of lost items then display notification
 
         //writeToFile("Item", Found);
-        readFromCSV(Found, FoundArray);
+        readFromCSV(notification, notificationArray);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1,FoundArray);
+                android.R.layout.simple_list_item_1, android.R.id.text1,notificationArray);
 
 
         listViewNotifications.setAdapter(adapter);
@@ -96,7 +101,7 @@ public class Notification extends AppCompatActivity {
                         getApplicationContext(),"Position: "+ itemPosition + "listItem : "
                                 + Item, Toast.LENGTH_LONG).show();
                 Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
-                iDetail.putExtra(Item, Item);
+                iDetail.putExtra("Item", Item);
 
                 startActivity(iDetail);
             }
