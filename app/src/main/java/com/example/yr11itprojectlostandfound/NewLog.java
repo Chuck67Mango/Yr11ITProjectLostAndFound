@@ -19,6 +19,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.util.ArrayList;
 
 public class NewLog extends AppCompatActivity {
     public static final String Lost = "LostItems.csv";
@@ -74,7 +75,140 @@ public class NewLog extends AppCompatActivity {
         }
     }
 
+    private void checkFromCSV2(String filename, String strSearch, ArrayList<Integer> Matches, ArrayList<Integer> successfulMatches) {
+        try{
+            InputStream inputStream = openFileInput(filename);
+            int intLength = Matches.size()-1;
 
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+                int i =0;
+                int j =0;
+                while(j<intLength) {
+                    while (i<Matches.get(j)) {
+                        i++;
+                        strLine = br.readLine();
+                        if (strSearch.contains(strLine)) {
+                            successfulMatches.add(i);
+                        }
+                    }
+                    j++;
+                }
+            }
+            else{
+                showToast("No matches Found");
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+
+
+    }
+
+    private void checkFromCSV1(String filename, String strSearch, ArrayList<Integer> Matches) {
+        try{
+            InputStream inputStream = openFileInput(filename);
+
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+                int i =0;
+                while((strLine=br.readLine())!=null){
+                    i++;
+                    if(strSearch.contains(strLine)){
+                        Matches.add(i);
+                    }
+                }
+            }
+            else{
+                showToast("No matches Found");
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+
+
+    }
+
+    private void getValueFromCSV(String filename, ArrayList<Integer> FinalMatches) {
+        try{
+            InputStream inputStream = openFileInput(filename);
+            int intLength = FinalMatches.size()-1;
+
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+                int i =0;
+                int j =0;
+                while(j<intLength) {
+                    while (i<FinalMatches.get(j)) {
+                        i++;
+                        strLine = br.readLine();
+                        writeToFile(strLine, "notifications.csv");
+                    }
+                    j++;
+                }
+            }
+            else{
+                showToast("No matches Found");
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+
+
+    }
+
+    private void MatchMaking(String strColour, String strItem, String strDescription){
+        ArrayList<Integer> arrMatches1 = new ArrayList<Integer>();
+        ArrayList<Integer> arrMatches2 = new ArrayList<Integer>();
+        ArrayList<Integer> arrMatchesFinal = new ArrayList<Integer>();
+
+        checkFromCSV1("itemLostItems.csv", strItem, arrMatches1 );
+        checkFromCSV2("colourLostItems.csv", strColour, arrMatches1, arrMatches2);
+        checkFromCSV2("descriptionLostItems.csv", strDescription, arrMatches2, arrMatchesFinal);
+
+        getValueFromCSV("nameLostItems.csv", arrMatchesFinal);
+        getValueFromCSV("classLostItems.csv", arrMatchesFinal);
+        getValueFromCSV("itemLostItems.csv", arrMatchesFinal);
+        getValueFromCSV("colourLostItems.csv", arrMatchesFinal);
+        getValueFromCSV("descriptionLostItems.csv", arrMatchesFinal);
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +230,8 @@ public class NewLog extends AppCompatActivity {
         Button btnClear = (Button) findViewById(R.id.btnClear);
 
         CheckBox chkFound = (CheckBox) findViewById(R.id.CheckBoxFound);
+
+
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -137,6 +273,8 @@ public class NewLog extends AppCompatActivity {
                         writeToFile(strColour, "colourFoundItems.csv");
                         writeToFile(strName, "nameFoundItems.csv");
                         writeToFile(strClass, "classFoundItems.csv");
+
+                        MatchMaking(strColour, strItem, strDescription);
                     }
                     else{
                         int intNoOfItems = 0;
@@ -155,6 +293,8 @@ public class NewLog extends AppCompatActivity {
                     edtDescription.setText("");
                     edtItem.setText("");
                     chkFound.setChecked(false);
+
+                    showToast("saved");
 
                 }
 
