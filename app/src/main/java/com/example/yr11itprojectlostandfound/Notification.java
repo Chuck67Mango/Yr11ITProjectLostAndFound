@@ -75,7 +75,7 @@ public class Notification extends AppCompatActivity {
 
         //make the code read file search for found items that match description of lost items then display notification
 
-        //writeToFile("Item", Found);
+        writeToFile("Item", Found);
         readFromCSV(Found, FoundArray);
 
 
