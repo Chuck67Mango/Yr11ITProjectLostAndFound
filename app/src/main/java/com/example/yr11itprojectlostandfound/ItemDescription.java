@@ -26,7 +26,6 @@ public class ItemDescription extends AppCompatActivity {
         EditText edtItem = (EditText) findViewById(R.id.edtItem);
 
         ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
-        Button btnClear = (Button) findViewById(R.id.btnClear);
 
         CheckBox chkFound = (CheckBox) findViewById(R.id.CheckBoxFound);
     }
