@@ -170,7 +170,7 @@ public class NewLog extends AppCompatActivity {
                     while (i<FinalMatches.get(j)) {
                         i++;
                         strLine = br.readLine();
-                        writeToFile(strLine, "notifications.csv");
+                        writeToFile(strLine+"\n", "notifications.csv");
                     }
                     j++;
                 }
@@ -193,7 +193,7 @@ public class NewLog extends AppCompatActivity {
 
     }
 
-    private void MatchMaking(String strColour, String strItem, String strDescription){
+    private void MatchMaking(String strColour, String strItem, String strDescription, String strName){
         ArrayList<Integer> arrMatches1 = new ArrayList<Integer>();
         ArrayList<Integer> arrMatches2 = new ArrayList<Integer>();
         ArrayList<Integer> arrMatchesFinal = new ArrayList<Integer>();
@@ -207,6 +207,7 @@ public class NewLog extends AppCompatActivity {
         getValueFromCSV("itemLostItems.csv", arrMatchesFinal);
         getValueFromCSV("colourLostItems.csv", arrMatchesFinal);
         getValueFromCSV("descriptionLostItems.csv", arrMatchesFinal);
+        writeToFile(strName+"\n", "notifications.csv");
 
     }
 
@@ -274,7 +275,7 @@ public class NewLog extends AppCompatActivity {
                         writeToFile(strName, "nameFoundItems.csv");
                         writeToFile(strClass, "classFoundItems.csv");
 
-                        MatchMaking(strColour, strItem, strDescription);
+                        MatchMaking(strColour, strItem, strDescription, strName);
                     }
                     else{
                         int intNoOfItems = 0;
