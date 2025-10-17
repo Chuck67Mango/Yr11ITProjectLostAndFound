@@ -72,6 +72,11 @@ public class Notification extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
 
+        String strColour = "";
+        String strName = "";
+        String strItem = "";
+        String strClass = "";
+        String strDescription = "";
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch4);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd4);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
@@ -80,7 +85,6 @@ public class Notification extends AppCompatActivity {
 
         //make the code read file search for found items that match description of lost items then display notification
 
-        //writeToFile("Item", Found);
         readFromCSV(notification, notificationArray);
 
 
@@ -93,12 +97,12 @@ public class Notification extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
 
-                int itemPosition=position;
+                int itemPosition = position;
 
                 String Item = (String) listViewNotifications.getItemAtPosition(position);
 
                 Toast.makeText(
-                        getApplicationContext(),"Position: "+ itemPosition + "listItem : "
+                        getApplicationContext(), "Position: " + itemPosition + "listItem : "
                                 + Item, Toast.LENGTH_LONG).show();
                 Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
                 iDetail.putExtra("Item", Item);
@@ -106,7 +110,7 @@ public class Notification extends AppCompatActivity {
                 startActivity(iDetail);
             }
         });
-
+//
 
 
 

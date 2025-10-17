@@ -36,8 +36,6 @@ public class ItemDescription extends AppCompatActivity {
         EditText edtColour = (EditText) findViewById(R.id.edtColour);
         EditText edtItem = (EditText) findViewById(R.id.edtItem);
 
-        ImageButton btnSubmit = (ImageButton) findViewById(R.id.imgBtnAdd);
-
         CheckBox chkFound = (CheckBox) findViewById(R.id.CheckBoxFound);
 
         edtName.setText(strName);
