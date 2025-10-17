@@ -24,11 +24,11 @@ public class ItemDescription extends AppCompatActivity {
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification3);
 
         String strItem = getIntent().getStringExtra("Item");
-        String strName = "testName"; //Change these to actual data
-        String strClass = "TestClass";
-        String strDescription = "Test";
-        //String strItem = "TestItem";
-        String strColour = "TestColour";
+        String strName = getIntent().getStringExtra("Name");
+        String strColour = getIntent().getStringExtra("Colour");
+        String strClass = getIntent().getStringExtra("Class");
+        String strDescription = getIntent().getStringExtra("Description");
+
 
         EditText edtName = (EditText) findViewById(R.id.edtName);
         EditText edtClass = (EditText) findViewById(R.id.edtClass);

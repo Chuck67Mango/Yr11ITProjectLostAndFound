@@ -99,13 +99,19 @@ public class Notification extends AppCompatActivity {
 
                 int itemPosition = position;
 
-                String Item = (String) listViewNotifications.getItemAtPosition(position);
+                String strItem = (String) listViewNotifications.getItemAtPosition(position);
 
                 Toast.makeText(
                         getApplicationContext(), "Position: " + itemPosition + "listItem : "
-                                + Item, Toast.LENGTH_LONG).show();
+                                + strItem, Toast.LENGTH_LONG).show();
                 Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
-                iDetail.putExtra("Item", Item);
+                iDetail.putExtra("Item", strItem);
+                iDetail.putExtra("Name", strName);
+                iDetail.putExtra("Class", strClass);
+                iDetail.putExtra("Description", strDescription);
+                iDetail.putExtra("Colour", strColour);
+
+
 
                 startActivity(iDetail);
             }
