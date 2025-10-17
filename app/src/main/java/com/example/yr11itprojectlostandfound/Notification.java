@@ -26,6 +26,8 @@ public class Notification extends AppCompatActivity {
     public static final String Lost = "LostItems.csv";
     public static final String Found = "FoundItems.csv";
 
+
+
     public static final String notification = "notifications.csv";
 
 
@@ -74,9 +76,10 @@ public class Notification extends AppCompatActivity {
 
         String strColour = "";
         String strName = "";
-        String strItem = "";
+        //String strItem = "";
         String strClass = "";
         String strDescription = "";
+
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch4);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd4);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification4);
@@ -101,6 +104,7 @@ public class Notification extends AppCompatActivity {
 
                 String strItem = (String) listViewNotifications.getItemAtPosition(position);
 
+
                 Toast.makeText(
                         getApplicationContext(), "Position: " + itemPosition + "listItem : "
                                 + strItem, Toast.LENGTH_LONG).show();
@@ -110,8 +114,6 @@ public class Notification extends AppCompatActivity {
                 iDetail.putExtra("Class", strClass);
                 iDetail.putExtra("Description", strDescription);
                 iDetail.putExtra("Colour", strColour);
-
-
 
                 startActivity(iDetail);
             }

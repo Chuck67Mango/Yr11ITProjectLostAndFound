@@ -160,17 +160,14 @@
         app:layout_constraintVertical_bias="0.069"
         app:srcCompat="?android:attr/actionModeWebSearchDrawable" />
 
-    <EditText
-        android:id="@+id/edtDisplay2"
-        android:layout_width="345dp"
-        android:layout_height="352dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <ListView
+        android:id="@+id/listViewSearch"
+        android:layout_width="408dp"
+        android:layout_height="561dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtFilter"
-        app:layout_constraintVertical_bias="0.178" />
+        app:layout_constraintVertical_bias="0.367" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
