@@ -120,8 +120,8 @@
 
     <ListView
         android:id="@+id/listViewNotifications"
-        android:layout_width="326dp"
-        android:layout_height="577dp"
+        android:layout_width="588dp"
+        android:layout_height="776dp"
         app:layout_constraintBottom_toTopOf="@+id/textView10"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

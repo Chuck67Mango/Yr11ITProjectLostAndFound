@@ -150,7 +150,6 @@ public class NewLog extends AppCompatActivity {
             showToast("Error! Something went wrong");
         }
 
-
     }
 
     private void getValueFromCSV(String filename, ArrayList<Integer> FinalMatches) {
