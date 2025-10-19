@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -25,7 +26,7 @@ public class search extends AppCompatActivity {
     public static final String Both = "LostAndFoundItems.csv";
     ArrayList<String> SearchResults = new ArrayList<>();
 
-    private void readFromCSV(String FILENAME, ArrayList Array, String Search) {
+    private void Search(String FILENAME, ArrayList Array, String Search) {
         try {
             InputStream inputStream = openFileInput(FILENAME);
             if (inputStream != null) {
@@ -36,7 +37,6 @@ public class search extends AppCompatActivity {
                 while ((strLine = br.readLine()) != null) {
                     if (strLine.contains(Search)) {
                         Array.add(strLine);
-                    }else {
                     }
                 }
 
@@ -59,6 +59,15 @@ public class search extends AppCompatActivity {
             //showToast("error in saving");
         }
     }
+    private void DisplayArrItems (String strPreMsg){
+        String strItemPerLine = strPreMsg;
+        for (String ItemDetail: SearchResults){
+            strItemPerLine = strItemPerLine + "\n" + ItemDetail;
+        }
+        TextView TxtVSearchResults = (TextView) findViewById(R.id.textViewResults);
+        TxtVSearchResults.setText(strItemPerLine);
+
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,24 +76,34 @@ public class search extends AppCompatActivity {
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch2);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd2);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification2);
-        ImageButton btnFilter = (ImageButton) findViewById(R.id.btnFilter);
+        //ImageButton btnFilter = (ImageButton) findViewById(R.id.btnFilter);
+        Button btnFilter = (Button) findViewById(R.id.BtnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
-        ListView listViewSearch = (ListView) findViewById(R.id.listViewSearch);
+        //ListView listViewSearch = (ListView) findViewById(R.id.listViewSearch);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
+        TextView TxtVSearchResults = (TextView) findViewById(R.id.textViewResults);
 
-writeToFile("Test", Both);
+//writeToFile("Test"+"\n", Both);
+//edtFilter.setText("Test");
+//        //String strSearch = edtFilter.getText().toString();
+        //String strSearch = edtFilter.getText().toString();
+       //readFromCSV(Both, SearchResults, strSearch);
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
                 String strSearch = edtFilter.getText().toString();
-                readFromCSV(Both, SearchResults, strSearch);
+                Search(Both, SearchResults, strSearch);
+                DisplayArrItems(strSearch);
+
+
             }
         });
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, android.R.id.text1,SearchResults);
 
 
-        listViewSearch.setAdapter(adapter);
+        //listViewSearch.setAdapter(adapter);
 
         btnSearch.setOnClickListener(new View.OnClickListener() {
             @Override
