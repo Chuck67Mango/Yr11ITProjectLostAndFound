@@ -26,8 +26,13 @@ public class Notification extends AppCompatActivity {
     public static final String Lost = "LostItems.csv";
     public static final String Found = "FoundItems.csv";
 
-    ArrayList<String> LostArray = new ArrayList<>();
-    ArrayList <String> FoundArray = new ArrayList<>();
+
+
+
+    private void showToast(String strMsg) {
+        Toast toastMsg = Toast.makeText(this, strMsg, Toast.LENGTH_SHORT);
+        toastMsg.show();
+    }
 
 
     private void writeToFile(String data, String FILENAME){
@@ -42,6 +47,51 @@ public class Notification extends AppCompatActivity {
         }
     }
 
+    private void readFromCSV(ArrayList<String> Information, ArrayList<String> Item){
+        try{
+            InputStream inputStream = openFileInput("notifications.csv");
+
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+
+                while((strLine=br.readLine())!=null){
+                    String strNameLost = strLine;
+                    strLine= br.readLine();
+                    String strClass = strLine;
+                    strLine= br.readLine();
+                    String strItem = strLine;
+                    strLine= br.readLine();
+                    String strColour = strLine;
+                    strLine= br.readLine();
+                    String strDescription = strLine;
+                    strLine= br.readLine();
+                    String strNameFound = strLine;
+
+                    Information.add("Name: "+strNameLost+"    Class: "+strClass + "Item: "+strItem);
+                    Item.add("Item: "+strItem+"    Colour: "+strColour);
+                }
+            }
+            else{
+                showToast("N/A");
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,12 +104,15 @@ public class Notification extends AppCompatActivity {
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings4);
         ListView listViewNotifications = (ListView) findViewById(R.id.listViewNotifications);
 
+        ArrayList <String> ArrayItem = new ArrayList<>();
+        ArrayList <String> ArrayDescription = new ArrayList<>();
+
         //make the code read file search for found items that match description of lost items then display notification
         
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, android.R.id.text1,FoundArray);
+                android.R.layout.simple_list_item_1, android.R.id.text1,ArrayItem);
 
 
         listViewNotifications.setAdapter(adapter);

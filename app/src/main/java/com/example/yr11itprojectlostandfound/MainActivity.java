@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     clearFile("classFoundItems.csv");
                     clearFile("classLostItems.csv");
                     clearFile("notifications.csv");
+                    clearFile("Lost.csv");
 
                     showToast("HISTORY CLEARED SUCCESSFULLY");
                     edtPassword.setText("");

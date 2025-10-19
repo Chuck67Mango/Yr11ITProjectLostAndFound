@@ -273,6 +273,7 @@ public class NewLog extends AppCompatActivity {
                         writeToFile(strColour, "colourFoundItems.csv");
                         writeToFile(strName, "nameFoundItems.csv");
                         writeToFile(strClass, "classFoundItems.csv");
+                        writeToFile(strName +" "+ strClass+" "+strItem+" "+strColour+" "+strDescription,"Lost.csv");
 
                         MatchMaking(strColour, strItem, strDescription, strName);
                     }

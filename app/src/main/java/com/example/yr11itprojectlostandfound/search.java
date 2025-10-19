@@ -24,9 +24,49 @@ public class search extends AppCompatActivity {
         toastMsg.show();
     }
 
-    private void FilterFromCSV(String filename, String strSearch, ArrayList<Integer> SearchResults) {
+    private void getValueFromCSV(String filename, ArrayList<Integer> SearchResults, ArrayList<String> Information) {
         try{
             InputStream inputStream = openFileInput(filename);
+            int intLength = SearchResults.size()-1;
+
+            if (inputStream!=null){
+                InputStreamReader isr = new InputStreamReader(inputStream);
+
+                BufferedReader br = new BufferedReader(isr);
+
+                String strLine ="";
+                int i =0;
+                int j =0;
+                while(j<intLength) {
+                    while (i<SearchResults.get(j)) {
+                        i++;
+                        strLine = br.readLine();
+                        Information.add(strLine);
+                    }
+                    j++;
+                }
+            }
+            else{
+                showToast("No matches Found");
+            }
+
+            inputStream.close();
+
+        }
+
+        catch (FileNotFoundException e){
+            showToast("Error! CSV file now found");
+        }
+        catch(IOException e){
+            showToast("Error! Something went wrong");
+        }
+
+
+    }
+
+    private void FilterFromCSV(String strSearch, ArrayList<Integer> SearchResults) {
+        try{
+            InputStream inputStream = openFileInput("Lost.csv");
 
             if (inputStream!=null){
                 InputStreamReader isr = new InputStreamReader(inputStream);
@@ -37,7 +77,7 @@ public class search extends AppCompatActivity {
                 int i =0;
                 while((strLine=br.readLine())!=null){
                     i++;
-                    if(strSearch.contains(strLine)){
+                    if(strLine.contains(strSearch)){
                         SearchResults.add(i);
                     }
                 }
@@ -69,21 +109,31 @@ public class search extends AppCompatActivity {
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification2);
         ImageButton btnFilter = (ImageButton) findViewById(R.id.btnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
-        EditText edtDisplay = (EditText) findViewById(R.id.edtDisplay2);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
 
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String strFilter = edtFilter.getText().toString();
-                ArrayList<Integer> arrSearchResultsFound = new ArrayList<Integer>();
-                ArrayList<Integer> arrSearchResultsLost = new ArrayList<Integer>();
+                ArrayList<Integer> arrSearchResults = new ArrayList<Integer>();
+                ArrayList<String> arrName = new ArrayList<String>();
+                ArrayList<String> arrClass = new ArrayList<String>();
+                ArrayList<String> arrItem = new ArrayList<String>();
+                ArrayList<String> arrColour = new ArrayList<String>();
+                ArrayList<String> arrDescription = new ArrayList<String>();
+
 
                 if(strFilter.equals("")){
                     showToast("search bar is empty");
                 }
                 else{
-                    FilterFromCSV("itemsFoundItems.csv", arrSearchResultsFound, "");
+                    FilterFromCSV(strFilter, arrSearchResults);
+
+                    getValueFromCSV("nameLostItems.csv", arrSearchResults, arrName);
+                    getValueFromCSV("classLostItems.csv", arrSearchResults, arrClass);
+                    getValueFromCSV("itemLostItems.csv", arrSearchResults, arrItem);
+                    getValueFromCSV("colourLostItems.csv", arrSearchResults, arrColour);
+                    getValueFromCSV("descriptionLostItems.csv", arrSearchResults, arrDescription);
                 }
             }
         });
