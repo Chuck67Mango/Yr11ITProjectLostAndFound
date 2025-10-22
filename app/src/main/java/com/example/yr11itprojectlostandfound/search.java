@@ -2,6 +2,7 @@ package com.example.yr11itprojectlostandfound;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class search extends AppCompatActivity {
@@ -27,7 +29,7 @@ public class search extends AppCompatActivity {
     private void getValueFromCSV(String filename, ArrayList<Integer> SearchResults, ArrayList<String> Information) {
         try{
             InputStream inputStream = openFileInput(filename);
-            int intLength = SearchResults.size()-1;
+            int intLength = SearchResults.size();
 
             if (inputStream!=null){
                 InputStreamReader isr = new InputStreamReader(inputStream);
@@ -64,6 +66,18 @@ public class search extends AppCompatActivity {
 
     }
 
+    private void writeToFile(String data, String File){
+        try{
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
+            outputStreamWriter.write(data);
+            outputStreamWriter.close();
+            showToast("logged");
+
+        } catch (IOException e){
+            showToast("error in saving");
+        }
+    }
+
     private void FilterFromCSV(String strSearch, ArrayList<Integer> SearchResults) {
         try{
             InputStream inputStream = openFileInput("Lost.csv");
@@ -84,6 +98,9 @@ public class search extends AppCompatActivity {
             }
             else{
                 showToast("No matches Found");
+                EditText edtDisplay = (EditText) findViewById(R.id.editTextTextMultiLine);
+                edtDisplay.setText("N/A");
+
             }
 
             inputStream.close();
@@ -107,9 +124,10 @@ public class search extends AppCompatActivity {
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch2);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd2);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification2);
-        ImageButton btnFilter = (ImageButton) findViewById(R.id.btnFilter);
+        Button btnFilter = (Button) findViewById(R.id.btnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
+        EditText edtDisplay = (EditText) findViewById(R.id.editTextTextMultiLine);
 
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +152,16 @@ public class search extends AppCompatActivity {
                     getValueFromCSV("itemLostItems.csv", arrSearchResults, arrItem);
                     getValueFromCSV("colourLostItems.csv", arrSearchResults, arrColour);
                     getValueFromCSV("descriptionLostItems.csv", arrSearchResults, arrDescription);
+
+                    int j = arrColour.size();
+                    int i =0;
+                    String strFinalTxt = "";
+
+                    while(i<j){
+                        String strTxt = "Name: "+arrName.get(i)+"| Class: "+arrClass.get(i)+"| Item: "+arrItem.get(i)+"| Colour: "+arrColour+"| Description: "+arrDescription+"|";
+                        edtDisplay.setText(strFinalTxt+strTxt+"\n");
+                        strFinalTxt = edtDisplay.getText().toString();
+                    }
                 }
             }
         });
