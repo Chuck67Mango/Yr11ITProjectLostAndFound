@@ -28,7 +28,6 @@ public class Notification extends AppCompatActivity {
 
 
 
-
     private void showToast(String strMsg) {
         Toast toastMsg = Toast.makeText(this, strMsg, Toast.LENGTH_SHORT);
         toastMsg.show();
@@ -85,7 +84,7 @@ public class Notification extends AppCompatActivity {
         }
 
         catch (FileNotFoundException e){
-            showToast("Error! CSV file now found");
+            showToast("Error! CSV file not found");
         }
         catch(IOException e){
             showToast("Error! Something went wrong");
@@ -109,7 +108,7 @@ public class Notification extends AppCompatActivity {
         ArrayList <String> ArrayDescription = new ArrayList<>();
 
         //make the code read file search for found items that match description of lost items then display notification
-        
+        readFromCSV(ArrayItem, ArrayDescription);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
