@@ -107,7 +107,7 @@ public class search extends AppCompatActivity {
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch2);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd2);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification2);
-        ImageButton btnFilter = (ImageButton) findViewById(R.id.BtnFilter);
+        Button btnFilter = (Button) findViewById(R.id.btnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
         ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
 

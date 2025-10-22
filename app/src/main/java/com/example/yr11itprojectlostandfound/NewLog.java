@@ -36,7 +36,7 @@ public class NewLog extends AppCompatActivity {
             OutputStreamWriter outputStreamWriter = new OutputStreamWriter(openFileOutput(File, Context.MODE_APPEND));
             outputStreamWriter.write(data);
             outputStreamWriter.close();
-            showToast(data + "logged");
+            showToast("logged");
 
         } catch (IOException e){
             showToast("error in saving");
@@ -155,7 +155,7 @@ public class NewLog extends AppCompatActivity {
     private void getValueFromCSV(String filename, ArrayList<Integer> FinalMatches) {
         try{
             InputStream inputStream = openFileInput(filename);
-            int intLength = FinalMatches.size()-1;
+            int intLength = FinalMatches.size();
 
             if (inputStream!=null){
                 InputStreamReader isr = new InputStreamReader(inputStream);
