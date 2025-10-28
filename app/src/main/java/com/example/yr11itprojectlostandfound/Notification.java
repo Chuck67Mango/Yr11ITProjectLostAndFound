@@ -73,6 +73,7 @@ public class Notification extends AppCompatActivity {
                     Information.add("Name: "+strNameLost+"    Class: "+strClass + "Item: "+strItem);
                     Description.add("Item: "+strItem+"    Colour: "+strColour);
 
+
                 }
             }
             else{
@@ -108,7 +109,7 @@ public class Notification extends AppCompatActivity {
         ArrayList <String> ArrayDescription = new ArrayList<>();
 
         //make the code read file search for found items that match description of lost items then display notification
-        //readFromCSV(ArrayItem, ArrayDescription);
+        readFromCSV(ArrayItem, ArrayDescription);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -119,16 +120,23 @@ public class Notification extends AppCompatActivity {
         listViewNotifications.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                //InputStream inputStream = openFileInput("notifications.csv");
+                //readFromCSV(ArrayItem, ArrayDescription);
 
                 int itemPosition=position;
 
                 String itemValue = (String) listViewNotifications.getItemAtPosition(position);
+                //String strName = (String
 
                 Toast.makeText(
                         getApplicationContext(),"Position: "+ itemPosition + "listItem : "
                                 + itemValue, Toast.LENGTH_LONG).show();
                 Intent iDetail = new Intent(view.getContext(), ItemDescription.class);
-                iDetail.putExtra("BrandName", itemValue);
+                iDetail.putExtra("Name", itemValue);
+                iDetail.putExtra("Description", itemValue);
+                iDetail.putExtra("Class", itemValue);
+                iDetail.putExtra("Colour", itemValue);
+                iDetail.putExtra("Item", itemValue);
 
                 startActivity(iDetail);
             }
