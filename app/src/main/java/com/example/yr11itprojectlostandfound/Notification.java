@@ -47,7 +47,7 @@ public class Notification extends AppCompatActivity {
         }
     }
 
-    private void readFromCSV(ArrayList<String> Information, ArrayList<String> Description){
+    private void readFromCSV(ArrayList<String> Information, ArrayList<String> Description, ArrayList<String> Colour, ArrayList<String> Item){
         try{
             InputStream inputStream = openFileInput("notifications.csv");
 
@@ -71,8 +71,10 @@ public class Notification extends AppCompatActivity {
                     strLine= br.readLine();
                     String strNameFound = strLine;
 
-                    Information.add("Name: "+strNameLost+"    Class: "+strClass + "Item: "+strItem);
-                    Description.add("Item: "+strItem+"    Colour: "+strColour);
+                    Information.add("Name: "+strNameLost+"    Class: "+strClass);
+                    Description.add("Description: "+strDescription);
+                    Colour.add("Colour: "+strColour);
+                    Item.add("Item: "+strItem);
 
                 }
             }
