@@ -109,9 +109,12 @@ public class Notification extends AppCompatActivity {
 
         ArrayList <String> ArrayItem = new ArrayList<>();
         ArrayList <String> ArrayDescription = new ArrayList<>();
+        ArrayList <String> ArrayColour = new ArrayList<>();
+        ArrayList <String> ArrayTitle = new ArrayList<>();
+
 
         //make the code read file search for found items that match description of lost items then display notification
-        readFromCSV(ArrayItem, ArrayDescription);
+        readFromCSV(ArrayTitle, ArrayDescription, ArrayColour, ArrayItem);
 
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
