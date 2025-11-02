@@ -218,7 +218,7 @@ public class NewLog extends AppCompatActivity {
         ImageButton btnSearch = (ImageButton) findViewById(R.id.btnSearch3);
         ImageButton btnAdd = (ImageButton) findViewById(R.id.btnAdd3);
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification3);
-        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification3);
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings3);
 
         EditText edtName = (EditText) findViewById(R.id.edtName);
         EditText edtClass = (EditText) findViewById(R.id.edtClass);
@@ -268,12 +268,11 @@ public class NewLog extends AppCompatActivity {
                         int intNoOfItems = 0;
                         countFromCSV(intNoOfItems, "noFoundItems.csv");
                         writeToFile(intNoOfItems+"\n","noFoundItems.csv");
-                        writeToFile(strItem, "itemFoundItems.csv");
-                        writeToFile(strDescription, "descriptionFoundItems.csv");
-                        writeToFile(strColour, "colourFoundItems.csv");
-                        writeToFile(strName, "nameFoundItems.csv");
-                        writeToFile(strClass, "classFoundItems.csv");
-                        writeToFile(strName +" "+ strClass+" "+strItem+" "+strColour+" "+strDescription,"Lost.csv");
+                        writeToFile(strItem+"\n", "itemFoundItems.csv");
+                        writeToFile(strDescription+"\n", "descriptionFoundItems.csv");
+                        writeToFile(strColour+"\n", "colourFoundItems.csv");
+                        writeToFile(strName+"\n", "nameFoundItems.csv");
+                        writeToFile(strClass+"\n", "classFoundItems.csv");
 
                         MatchMaking(strColour, strItem, strDescription, strName);
                     }
@@ -281,11 +280,13 @@ public class NewLog extends AppCompatActivity {
                         int intNoOfItems = 0;
                         countFromCSV(intNoOfItems, "noLostItems.csv");
                         writeToFile(intNoOfItems+"\n","noLostItems.csv");
-                        writeToFile(strItem, "itemLostItems.csv");
-                        writeToFile(strDescription, "descriptionLostItems.csv");
-                        writeToFile(strColour, "colourLostItems.csv");
-                        writeToFile(strName, "nameLostItems.csv");
-                        writeToFile(strClass, "classLostItems.csv");
+                        writeToFile(strItem+"\n", "itemLostItems.csv");
+                        writeToFile(strDescription+"\n", "descriptionLostItems.csv");
+                        writeToFile(strColour+"\n", "colourLostItems.csv");
+                        writeToFile(strName+"\n", "nameLostItems.csv");
+                        writeToFile(strClass+"\n", "classLostItems.csv");
+                        writeToFile(strName +" "+ strClass+" "+strItem+" "+strColour+" "+strDescription+"\n","Lost.csv");
+
                     }
 
                     edtClass.setText("");

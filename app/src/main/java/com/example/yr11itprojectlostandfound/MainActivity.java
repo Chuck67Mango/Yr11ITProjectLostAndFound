@@ -87,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                 else if(strPassword.equals("oxley.lf")){
                     clearFile("noFoundItems.csv");
                     clearFile("noLostItems.csv");
-                    clearFile("itemsFoundItems.csv");
-                    clearFile("itemsLostItems.csv");
+                    clearFile("itemFoundItems.csv");
+                    clearFile("itemLostItems.csv");
                     clearFile("colourFoundItems.csv");
                     clearFile("colourLostItems.csv");
                     clearFile("descriptionFoundItems.csv");

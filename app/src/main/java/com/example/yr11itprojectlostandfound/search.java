@@ -27,7 +27,7 @@ public class search extends AppCompatActivity {
     private void getValueFromCSV(String filename, ArrayList<Integer> SearchResults, ArrayList<String> Information) {
         try{
             InputStream inputStream = openFileInput(filename);
-            int intLength = SearchResults.size()-1;
+            int intLength = SearchResults.size();
 
             if (inputStream!=null){
                 InputStreamReader isr = new InputStreamReader(inputStream);
@@ -41,8 +41,9 @@ public class search extends AppCompatActivity {
                     while (i<SearchResults.get(j)) {
                         i++;
                         strLine = br.readLine();
-                        Information.add(strLine);
+
                     }
+                    Information.add(strLine);
                     j++;
                 }
             }
@@ -109,7 +110,8 @@ public class search extends AppCompatActivity {
         ImageButton btnNotification = (ImageButton) findViewById(R.id.btnNotification2);
         Button btnFilter = (Button) findViewById(R.id.btnFilter);
         EditText edtFilter = (EditText) findViewById(R.id.edtFilter);
-        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnNotification2);
+        ImageButton btnSettings = (ImageButton) findViewById(R.id.btnSettings2);
+        EditText edtDisplay = (EditText)  findViewById(R.id.editTextTextMultiLine);
 
         btnFilter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,6 +136,16 @@ public class search extends AppCompatActivity {
                     getValueFromCSV("itemLostItems.csv", arrSearchResults, arrItem);
                     getValueFromCSV("colourLostItems.csv", arrSearchResults, arrColour);
                     getValueFromCSV("descriptionLostItems.csv", arrSearchResults, arrDescription);
+
+                    int intLength = arrSearchResults.size();
+                    int i=0;
+                    String strLine = "";
+
+                    while(i<intLength){
+                        edtDisplay.setText(strLine + "\n" + "Name: "+arrName.get(i)+ "\n"+"Class: "+arrClass.get(i)+"\n"+"Item: "+arrItem.get(i)+"\n"+"Colour: "+arrColour.get(i)+"\n"+"Description: "+arrDescription.get(i)+"\n");
+                        strLine=edtDisplay.getText().toString();
+                        i++;
+                    }
                 }
             }
         });

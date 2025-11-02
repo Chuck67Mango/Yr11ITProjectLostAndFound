@@ -131,7 +131,6 @@ public class Notification extends AppCompatActivity {
                 int itemPosition=position;
 
                 String itemValue = (String) listViewNotifications.getItemAtPosition(position);
-                //String strName = (String
 
                 Toast.makeText(
                         getApplicationContext(),"Position: "+ itemPosition + "listItem : "
